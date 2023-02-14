@@ -1,1 +1,1 @@
-# GeeksFroGeeks-POTD
+# GeeksForGeeks-POTD
