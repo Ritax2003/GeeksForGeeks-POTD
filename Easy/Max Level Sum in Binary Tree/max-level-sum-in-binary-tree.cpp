@@ -102,16 +102,16 @@ class Solution{
         
         while(q.empty()!=1){
             int size = q.size();
-            int sum =0;
+            int lvl_sum =0;
             
             for(int i =0;i<size;i++){
                 Node *temp = q.front();
-                sum+=temp->data;
+                lvl_sum+=temp->data;
                 q.pop();
                 if(temp->left!=NULL) q.push(temp->left);
                 if(temp->right!=NULL) q.push(temp->right);
             }
-            sum_max = max(sum,sum_max);
+            sum_max = max(lvl_sum,sum_max);
         }
         return sum_max;
     }
