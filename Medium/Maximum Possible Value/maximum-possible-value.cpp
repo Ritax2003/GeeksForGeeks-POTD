@@ -8,27 +8,27 @@ using namespace std;
 class Solution {
   public:
     long long maxPossibleValue(int N,vector<int> A, vector<int> B) {
-         long long x,y,mn=1e10,ans=0,tot=0;
+     long long num,ln,mn=1e10,ans=0,tot=0;
 
         for(int i=0;i<N;i++){
 
-            x=A[i];
+            num=A[i];
 
-            y=B[i];
+            ln=B[i];
 
-            if(y%2)
+            if(ln%2)
 
-                y--;
+                ln--;
 
-            if(y>=2){
+            if(ln>=2){
 
-                mn=min(mn,x);
+                mn=min(mn,num);
 
             }
 
-            ans+=y*x;
+            ans+=ln*num;
 
-            tot+=y;
+            tot+=ln;
 
         }
 
@@ -38,7 +38,7 @@ class Solution {
 
         }
 
-        return ans;
+        return ans;   // code here
     }
 };
 
