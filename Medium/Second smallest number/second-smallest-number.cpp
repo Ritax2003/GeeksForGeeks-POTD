@@ -8,122 +8,77 @@ using namespace std;
 
 class Solution{   
   public:
-    string secondSmallest(int S, int D){
-         int i=0,sum=1,digit;
-
-        string ans="1";
-
-        unordered_map<int,char> mp;
-
-        unordered_map<char , int> mp2;
-
-        for(i=0;i<10;i++){
-
-            mp[i]=48+i;
-
-            mp2[48+i]=i;
-
+    string secondSmallest(int s, int d){
+         // code here
+        if(s==1 or d==1 or s>=d*9) return "-1";
+        int r=d;
+        string curr="";
+        int dig9=s/9;
+        if(s%9==0) dig9--;
+        while(dig9--){
+            curr+='9';
+            d--;
+            s-=9;
         }
-
-        for(int i=1;i<D;i++){
-
-            ans+='0';
-
+        if(d<0) return "-1";
+        if(d==1){
+            curr+=to_string(s);
+            d--;
         }
-
-        if(S>=D*9 || D==1) return "-1";
-
-        for(i=D-1;i>-1;i--){
-
-            if(S-sum<10){
-
-                if(i>0){
-
-                    ans[i]=mp[S-sum];
-
-                    digit=S-sum;}
-
-                else{
-
-                    ans[i]=mp[S-sum+1];
-
-                    digit=S-sum+1;}
-
+        int num=s-1;
+        if(d>0){
+            curr+=to_string(num);
+            d--;
+        }
+        for(int i=1;i<d;i++){
+            curr+='0';
+        }
+        if(d>0)
+        curr+='1';
+        reverse(curr.begin(),curr.end());
+// Now, for second smallest num.
+        if(curr.size()==2){
+            int x=curr[0]-'0',y=curr[1]-'0';
+            x++;
+            y--;
+            curr[0]=x+'0';
+            curr[1]=y+'0';
+            return curr;
+        }
+        int flag=0;
+        for(int i=0;i<curr.size();i++){
+            if(curr[i]=='9'){// find first 9 then decrement it and increment the previous digit.
+                int x=curr[i]-'0',y=curr[i-1]-'0';
+                x--;
+                y++;
+                curr[i]=x+'0';
+                curr[i-1]=y+'0';
+                flag=1;
                 break;
-
             }
-
-            else{
-
-                ans[i]=mp[9];
-
-                sum+=9;
-
-                if(sum==S){
-
-                    digit=9;
-
+        }
+// if 9 is not present:
+        if(flag==0)
+            for(int i=curr.size()-1;i>=0;i--){
+                if(curr[i]=='1'){ // traverse from right and find first '1' and decrement it and increment previous digit.
+                    int x=curr[i]-'0',y=curr[i-1]-'0';
+                    x--;
+                    y++;
+                    curr[i]=x+'0';
+                    curr[i-1]=y+'0';
                     break;
-
                 }
-
-            }    
-
-        } 
-
-        if(digit==9){
-
-            if(i==0)
-
-               return "-1";
-
-            else if(i==D-1){
-
-                   ans[i-1]=mp[mp2[ans[i-1]]+1];
-
-                   ans[i]=mp[mp2[ans[i]]-1];
-
+// if u found first '0' then do it 1 and decrement next digit  
+                if(curr[i]=='0'){
+                    int x=curr[i]-'0',y=curr[i+1]-'0';
+                    x=1;
+                    y--;
+                    curr[i]=x+'0';
+                    curr[i+1]=y+'0';
+                    break;
+                }
             }
-
-            else{
-
-                ans[i-1]=mp[mp2[ans[i-1]]+1];
-
-                ans[i]=mp[mp2[ans[i]]-1];
-
-            }
-
-        }
-
-        else{
-
-        if(i==D-1){
-
-            ans[i]=mp[mp2[ans[i]]-1];
-
-            ans[i-1]=mp[mp2[ans[i-1]]+1];
-
-        }
-
-        else if(i==0){
-
-            ans[i]=mp[mp2[ans[i]]+1];
-
-            ans[i+1]=mp[mp2[ans[i+1]]-1];
-
-          }
-
-        else{
-
-            ans[i]=mp[mp2[ans[i]]+1];
-
-            ans[i+1]=mp[mp2[ans[i+1]]-1];
-
-         }
-
-        }
-
-      return ans;
+        return curr;
     }
 };
 
