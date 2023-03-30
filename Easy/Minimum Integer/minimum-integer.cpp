@@ -41,7 +41,7 @@ class Solution {
         long long int res = sum(A);
         long long int smallest = INT_MAX;
         for(int i=0;i<A.size();i++){
-            if((A.size()*A[i] == res || A.size()*A[i]>=res) && A[i]<smallest){
+            if(A.size()*A[i]>=res && A[i]<smallest){
                 smallest = A[i];
             }
         }
