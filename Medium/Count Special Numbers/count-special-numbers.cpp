@@ -11,32 +11,30 @@ class Solution {
   public:
     int countSpecialNumbers(int n, vector<int> arr) {
         // Code here
-        map<int,int>mp;
-        for(int i=0;i<n;++i){
-            mp[arr[i]]++;
-        }
-        
-        auto isSpecial= [&](int x)->auto{
+         int ans = 0;
+        sort(arr.begin(), arr.end());
+        for(int i = 0; i<n;i++){
             
-            for(int i=2;i*i<=x;++i){
-                if(x%i==0){
-                    if(mp[i] or mp[x/i])
-                        return true;
+            int p = i; 
+            int cnt = 0; 
+            while(p<n and arr[p]==arr[i]){
+                p++; 
+                cnt++;
+            }
+            
+            if(cnt>1){
+                ans+= cnt; 
+                i= p-1; 
+            }
+            else 
+            for(int j = 0; j<i;j++){
+                if(arr[i]%arr[j]==0){
+                    ans++; 
+                    break;
                 }
-            }  
-            return false;
-        };
-        
-        
-        int ans=0;
-        for(int i=0;i<n;++i){
-            if(isSpecial(arr[i]) or mp[arr[i]]>1){
-                ++ans;
             }
         }
-        if(mp[1])
-            ans=n-(mp[1]==1);
-        return ans;
+        return ans; 
         
     }
 };
