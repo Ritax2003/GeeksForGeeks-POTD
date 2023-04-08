@@ -1,12 +1,12 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/badefd58bace4f2ca25267ccfe0c9dc844415e90/1">Make the array beautiful</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of positive and negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] have the same sign. And you can do the following&nbsp;operation any number of times until the array becomes beautiful.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/badefd58bace4f2ca25267ccfe0c9dc844415e90/1">Make the array beautiful</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of negative and non-negative integers. You have to make the array beautiful. An array is beautiful if two adjacent integers, arr[i] and arr[i+1] are either negative or non-negative. And you can do the following&nbsp;operation any number of times until the array becomes beautiful.</span></p>
 
 <ul>
-	<li><span style="font-size:18px">If two adjacent integers have different signs, remove them.</span></li>
+	<li><span style="font-size:18px">If two adjacent integers are&nbsp;different i.e. one of them is negative and other is non-negative, remove them.</span></li>
 </ul>
 
 <p><span style="font-size:18px">Return the beautiful array after performing the above operation.</span></p>
 
-<p><span style="font-size:18px"><strong>Note:</strong> An empty array is also a beautiful array. There can be many adjacent integers with different signs. So remove adjacent integers with different signs from <strong>left to right</strong>.</span></p>
+<p><span style="font-size:18px"><strong>Note:</strong>An empty array is also a beautiful array. There can be many adjacent integers which are different as stated above. So remove different adjacent integers as described above from <strong>left to right</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
