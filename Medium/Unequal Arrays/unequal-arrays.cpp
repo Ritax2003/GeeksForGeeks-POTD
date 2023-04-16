@@ -31,26 +31,32 @@ public:
 class Solution {
   public:
     long long solve(int N, vector<int> &A, vector<int> &B) {
-         long long sum = 0;
-        vector<int> AP[2], BP[2];
-        for(int i = 0; i < N; i++) {
-           sum += A[i] - B[i];
-           AP[abs(A[i]) % 2].push_back(A[i]);
-           BP[abs(B[i]) % 2].push_back(B[i]);
+         sort(A.begin(),A.end()); // closer element should remain closer 
+        sort(B.begin(),B.end()); // Minimum opern
+        vector<int> Aodds,Aevens,Bodds,Bevens;
+        long long sum1=0,sum2=0;
+        for(int i=0;i<N;i++)
+        {
+            sum1+=A[i];
+            sum2+=B[i];
+            if(A[i]%2!=0) Aodds.push_back(A[i]);
+            else Aevens.push_back(A[i]);
+            if(B[i]%2!=0) Bodds.push_back(B[i]);
+            else Bevens.push_back(B[i]);
         }
-        if(sum != 0 || (int)AP[0].size() != (int)BP[0].size())
-        return -1;
+        // confirmation that A->B
+        if(sum1!=sum2 || Aodds.size()!=Bodds.size()) return -1;
         
-        long long ans = 0;
-        for(int i = 0; i < 2; i++) {
-           sort(AP[i].begin(), AP[i].end());
-           sort(BP[i].begin(), BP[i].end());
-        
-           for(int j = 0; j < (int)AP[i].size(); j++) {
-               ans += abs(AP[i][j] - BP[i][j]) / 2;
-           }
+        long long ans=0;
+        for(int i=0;i<Aodds.size();i++)
+        {
+            ans+=abs(Aodds[i]-Bodds[i]);
         }
-        return ans / 2;
+        for(int i=0;i<Aevens.size();i++)
+        {
+            ans+=abs(Aevens[i]-Bevens[i]);
+        }
+        return ans/4;
     }
 };
 
