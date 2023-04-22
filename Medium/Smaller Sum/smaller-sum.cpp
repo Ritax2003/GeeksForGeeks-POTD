@@ -9,19 +9,26 @@ using namespace std;
 class Solution{
 public:
     vector<long long> smallerSum(int n,vector<int> &arr){
-          map<int,long long> mp;
-        for(int i = 0 ; i<n ;i++){
-            mp[arr[i]]+=arr[i];
+          vector<long long> ans;
+        //create vector a 
+        vector<long long> a(arr.begin(),arr.end());
+        sort(a.begin(), a.end());
+        //to store the prefix sum or running sum
+        vector<long long> v(n);
+        //running sum starts from 0
+        v[0] = 0;
+        for(int i = 1 ; i < n; i++) {
+            //we are using v and sorted arr stored in a to store sum 
+            v[i] = v[i-1] + a[i-1];
         }
-        long long sum=0,temp=0;
-        for(auto it:mp){
-            temp = it.second;
-            mp[it.first] = sum;
-            sum+=temp;
-        }
-        vector<long long> ans(n);
-        for(int i = 0 ; i<n ; i++){
-            ans[i]=mp[arr[i]];
+        for(int i = 0 ; i < n; i++) {
+            long long val = arr[i];
+            //we have used lower bound to get the index of first presence of arr[i]
+            auto it = lower_bound(a.begin(),a.end(),val);
+            //get the index 
+            int idx = it - a.begin();
+            //at that index the value of sum i.e stored in v is pushed into the ans
+            ans.push_back(v[idx]);
         }
         return ans;
     }
