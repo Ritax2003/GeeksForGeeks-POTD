@@ -10,17 +10,15 @@ using namespace std;
 
 class Solution{
 public:
-int gcd(int a,int b){
-    if(a==b) return a;
-    if(a>b) 
-        gcd(a-b,b);
-    else 
-        gcd(a,b-a);
-}
+    int gcd(int a , int b){
+     if(b==0) return a;
+     a%=b;
+     return gcd(b,a);
+    }
     int minimumNumber(int n,vector<int> &arr){
        int a = arr[0];
        for(int i =1;i<n;i++){
-           a = __gcd(a,arr[i]);
+           a = gcd(a,arr[i]);
        }
        return a;
     }
