@@ -42,43 +42,52 @@ public:
 class Solution{
 
 public:
-
-int ans=0;
-
- 
-
-map<string,int>m;
-
-string solve(Node *root){
-
-    if(!root)return "";
-
-    string s="";
-
-    //Postorder
-
-    s+=to_string(root->data)+" ";
-
-    for(auto c:root->children)s+=solve(c)+" ";
-
+    set<string> track;
+    //do dfs and create the preorder string  from the root 
+    void dfs(Node *root, string &s) {
+        if (!root) return;
+        s += to_string(root->data) + ",";
+        for (int i = 0; i < root->children.size(); i++) {
+            if (root->children[i] != NULL) {
+                dfs(root->children[i], s);
+            }
+        }
+    }
     
-
-    if(m[s]==1)ans++;
-
-    m[s]++;
-
-    return s;
-
+    void helper(Node *root, set<string> &ans) {
+        if (!root) return;
+        //do bfs 
+        queue<Node*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int size = q.size();
+            //for every node create dfs string and check whether already covered 
+            while (size--) {
+                Node* node = q.front();
+                string preorder = "";
+                dfs(node, preorder);
+                //if subtree is there previously add to ans 
+                if (track.find(preorder) != track.end()) {
+                    ans.insert(preorder);
+                } else {
+                    //if subtee is not there then insert to track set 
+                    track.insert(preorder);
+                }
+                q.pop();
+                for (int i = 0; i < node->children.size(); i++) {
+                    if (node->children[i] != NULL) {
+                        q.push(node->children[i]);
+                    }
+                } 
+            }
+        }
+    }
     
-
-}
-
-    int duplicateSubtreeNaryTree(Node *root){
-
-        // Code here
-
-        solve(root);return ans;
-
+    int duplicateSubtreeNaryTree(Node *root) {
+        set<string> ans;
+        helper(root, ans);
+        //ans is size of ans set 
+        return ans.size();
     }
 
 };
