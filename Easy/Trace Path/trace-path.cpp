@@ -14,16 +14,16 @@ public:
         int maxh=0;int minh=0;
         int maxv=0;int minv=0;
         for(int i=0;i<s.length();i++){
-            char c=s[i];
-            if (c=='L'){
+            char c =s[i];
+            if (c =='L'){
                 counth--;
                 if(counth<minh) minh=counth;
             }
-            else if (c=='R'){
+            else if (c =='R'){
                 counth++;
                 if(counth>maxh) maxh=counth;
             }
-            else if(c=='U'){
+            else if(c =='U'){
                 countv++;
                 if(countv>maxv) maxv=countv;
             }
