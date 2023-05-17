@@ -33,8 +33,7 @@ public:
             }
         }
         
-        if (maxv-minv+1>n){return 0;}
-        if (maxh-minh+1>m){return 0;}
+        if (maxv-minv+1>n || maxh-minh+1>m) return 0;
         return 1;
     }
 };
