@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
 public:
-    int mod=1e9+7;
+    /*int mod=1e9+7;
     int solve(vector<vector<int>>&dp,int n,int r){
         if(r>n)return 0;
         if(r==0)return 1;
@@ -21,6 +21,19 @@ public:
         // code here
         vector<vector<int>>dp(n+1,vector<int>(r+1,-1));
         return solve(dp,n,r);
+    }*/
+    long long mod = 1e9 + 7;
+    int nCr(int n, int r){
+        if(r > n) return 0;
+        // code here
+        vector<vector<long long>> pascals(n + 1);
+        for(int r = 0 ; r <= n; r++) {
+            pascals[r] = vector<long long>(r + 1, 1);
+            for(int c = 1; c < r; c++) {
+                pascals[r][c] = (pascals[r - 1][c] + pascals[r - 1][c - 1]) % mod;
+            }
+        }
+        return pascals[n][r];
     }
 };
 
