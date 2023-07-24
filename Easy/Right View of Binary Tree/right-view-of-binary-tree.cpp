@@ -49,7 +49,8 @@ class Solution
             Node *right = NULL;
             int size = q.size();
             while(size--){
-                right = q.front(); q.pop();
+                right = q.front(); 
+                q.pop();
                 if(right->left) q.push(right->left);
                 if(right->right) q.push(right->right);
             }
