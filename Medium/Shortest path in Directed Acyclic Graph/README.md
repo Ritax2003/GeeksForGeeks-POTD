@@ -16,4 +16,12 @@ edge = [[0,1,2],[0,4,1],[4,5,4],[4,2,2],[1,2,3],[2,3,6],[5,3,1]]
 <p><span style="font-size: 18px;">You don't need to print or input anything. Complete the function <strong>shortest path()</strong>&nbsp;which takes an integer N as number of vertices, an integer M as number of edges and a&nbsp;2D Integer array(or vector)&nbsp;edges as the input parameters and returns an <strong>integer array(or vector)</strong>, denoting&nbsp;the list&nbsp;of distance from src to all nodes.</span></p>
 <p><span style="font-size: 18px;"><strong>Expected Time Complexity:&nbsp;</strong>O(N+M), where N is the number of nodes and M is edges<br><strong>Expected Space Complexity:&nbsp;</strong>O(N)</span></p>
 <p><span style="font-size: 18px;"><strong>Constraint:<br></strong></span><span style="font-size: 18px;">1 &lt;= N,M &lt;= 100<br></span><span style="font-size: 18px;">0 &lt;= edge<sub>i,0</sub>,edge<sub>i,1</sub>&nbsp;&lt;&nbsp;n<br>0 &lt;=&nbsp;</span><span style="font-size: 18px;">edge</span><sub>i,2</sub><span style="font-size: 18px;">&nbsp;&lt;=10<sup>5</sup></span></p>
-<p>&nbsp;</p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Graph</code>&nbsp;<code>Shortest Path</code>&nbsp;<code>Data Structures</code>&nbsp;<code>Algorithms</code>&nbsp;
+<p>&nbsp;</p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Graph</code>&nbsp;<code>Shortest Path</code>&nbsp;<code>Data 
+  
+  ![1](https://github.com/Ritax2003/GeeksForGeeks-POTD/assets/82272821/9eb3a27b-afd9-4e8a-83cd-91f3f396bad3)
+  ![2](https://github.com/Ritax2003/GeeksForGeeks-POTD/assets/82272821/94f9ec3d-40f8-45b6-a260-e9d943af7883)
+  ![3](https://github.com/Ritax2003/GeeksForGeeks-POTD/assets/82272821/8fff03a9-c6de-453b-866b-e79b674d5f3d)
+
+
+
+  Structures</code>&nbsp;<code>Algorithms</code>&nbsp;
