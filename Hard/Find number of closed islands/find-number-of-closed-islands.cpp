@@ -9,33 +9,33 @@ using namespace std;
 
 class Solution {
     public:
-    void dfs(vector<vector<int>>& matrix, int r, int c) {
-        if (r < 0 || r == matrix.size() || c < 0 || c == matrix[0].size() || matrix[r][c] == 0) return;
-        matrix[r][c] = 0;
-        dfs(matrix, r + 1, c);
-        dfs(matrix, r - 1, c);
-        dfs(matrix, r, c + 1);
-        dfs(matrix, r, c - 1);
+    void dfs(vector<vector<int>>&grid,int r,int c){
+        if(r<0||r==grid.size()||c<0||c==grid[0].size()||grid[r][c]==0) return;
+        
+        grid[r][c]=0;
+        
+        dfs(grid, r + 1, c);
+        dfs(grid, r - 1, c);
+        dfs(grid, r, c + 1);
+        dfs(grid, r, c - 1);
     }
-    
     int closedIslands(vector<vector<int>>& matrix, int N, int M) {
-        for(int r = 0; r < N; r++) {
-            for(int c = 0; c < M; c++) {
-                if (r == 0 || r == N - 1 || c == 0 || c == M - 1) {
-                    dfs(matrix, r, c);
-                }
-            }    
-        }     
-        int res = 0;
-        for(int r = 0; r < N; r++) {
-            for(int c = 0; c < M; c++) {
-                if (matrix[r][c] == 1) {
-                    res++;
-                    dfs(matrix, r, c);
+        int k =0 ;
+        for(int r=0;r<matrix.size();r++){
+            for(int c=0;c<matrix[0].size();c++){
+                if(r==0||r==N-1||c==0||c==M-1){
+                    dfs(matrix,r,c);
                 }
             }
         }
-        return res;
+        
+        for(int r=0;r<N;r++){
+            for(int c=0;c<M;c++){
+                if(matrix[r][c]==1) k++;
+                dfs(matrix,r,c);
+            }
+        }
+        return k;
     }
 };
 
