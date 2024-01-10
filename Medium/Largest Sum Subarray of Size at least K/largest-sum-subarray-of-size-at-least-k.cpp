@@ -6,24 +6,25 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution{
+    #define ll long long
     public:    
     long long int maxSumWithK(long long int a[], long long int n, long long int k) {
-        long long int ans = INT_MIN;
-        long long int sum = 0;
-        long long int start = 0;
-        long long prevele = 0;
+        ll int ans = INT_MIN;
+        ll int sum =0;
+        ll int last = 0;
+        ll int j =0;
         
-        for(int i =0;i<n;i++){
-            sum += a[i];
-            if(i - start + 1 ==k) ans = max(ans,sum);
-            else if(i - start +1 >k){
-                prevele +=a[start];
-                start++;
-                if(prevele <0){
-                    sum-=prevele;
-                    prevele=0;
+        for(ll int i =0;i<n;i++){
+            sum+= a[i];
+            if(i - j +1 == k) ans = max(sum,ans);
+            else if (i - j+1 > k){
+                last+=a[j];
+                j++;
+                if(last<0){
+                    sum-=last;
+                    last=0;
                 }
-                ans = max(ans,sum);
+                ans = max(sum,ans);
             }
         }
         return ans;
