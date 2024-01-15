@@ -13,9 +13,9 @@ class Solution{
         int curr = cost[i];
         int pick =0,notpick=0;
         if(curr<=total){
-            pick = 1+help(i+1,cost,total - curr + (curr * 9) / 10);
+            pick += 1+help(i+1,cost,total - curr + (curr * 9) / 10);
         }
-        notpick = help(i+1,cost,total);
+        notpick += help(i+1,cost,total);
         return dp[i][total] = max(pick,notpick);
     }
     int max_courses(int n, int total, vector<int> &cost){
