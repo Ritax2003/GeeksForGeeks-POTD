@@ -19,11 +19,12 @@ class Solution{
         return dp[i][total] = max(pick,notpick);
     }
     int max_courses(int n, int total, vector<int> &cost){
-        dp = vector<vector<int>>(n,vector<int>(total+1,-1));
+        dp = vector<vector<int>>(n+1,vector<int>(total+1,-1));
         int res = help(0,cost,total);
         return res;
     }
 };
+
 
 
 
